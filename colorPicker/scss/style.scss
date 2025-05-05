@@ -1,0 +1,142 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+$text-color: #fcefee;
+
+body {
+  position: relative;
+  height: 100vh;
+  font-family: sans-serif;
+  background-color: #222;
+  color: $text-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#bgChanger {
+  width: 230px;
+  padding: 25px;
+  font-size: 1.56rem;
+  outline: none;
+  background-color: #2d6cdf;
+  color: $text-color;
+  border: 3px solid $text-color;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.smooth_change {
+  transition: 0.3s ease-out;
+}
+
+ul {
+  position: relative;
+  top: -50px;
+  left: -5px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 50px;
+  height: 50px;
+
+  & li {
+    list-style: none;
+    width: 30px;
+    height: 30px;
+    background-color: #777;
+    margin: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: blur(2px);
+    transition: 0.2s ease-out;
+    border-radius: 50px;
+    border: 1px solid #fff;
+
+    &:hover {
+      filter: blur(0);
+    }
+
+    .content {
+      position: absolute;
+      cursor: text;
+      bottom: 45px;
+      width: 300px;
+      background-color: #fff;
+      color: #222;
+      z-index: 2;
+      padding: 20px;
+      border-radius: 4px;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.5s;
+      transform: translateX(38%) translateY(-50px);
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: #fff;
+        bottom: 0;
+        transform: rotate(45deg);
+        z-index: -2;
+      }
+    }
+
+    &:hover .content {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(38%) translateY(0px);
+    }
+  }
+}
+
+.fa-question {
+  font-size: 15px;
+}
+
+/* Small Screens */
+
+@media screen and (max-width: 768px) {
+  ul li .content {
+    position: absolute;
+    bottom: 45px;
+    width: 300px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+    transform: translateX(-38%) translateY(-50px);
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-color: #fff;
+      bottom: 0;
+      right: 20px;
+      transform: rotate(45deg);
+    }
+  }
+
+  ul li:hover .content {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-38%) translateY(0px);
+  }
+}

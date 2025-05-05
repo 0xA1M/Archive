@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./image/choose.png" type="image/x-icon" />
+    <title>Trivia</title>
+  </head>
+  <body>
+    <h1 id="desire"></h1>
+    <!-- Wrapper -->
+    <div class="wrapper">
+      <!-- Header -->
+      <header>
+        <h1 class="title">Trivia!</h1>
+      </header>
+
+      <!-- Content -->
+      <main class="container">
+        <!-- Multi Choice Question -->
+        <section class="multiChoice">
+          <h2 class="header">
+            Part I: Multiple Choice
+            <!-- Category -->
+            <span class="type">(Category: "<span id="category"></span>")</span>
+
+            <!-- Difficulty -->
+            <button type="submit" onclick="location.reload();" id="reloader">
+              Next
+            </button>
+            <span id="diff"></span>
+          </h2>
+          <hr />
+
+          <h3 class="question" id="multi"></h3>
+          <!-- Choices -->
+          <div class="choices"></div>
+        </section>
+
+        <!-- Free Response -->
+        <section class="freeAnswer">
+          <h2 class="header">Part II: Free Response</h2>
+          <hr />
+
+          <h3 class="question" id="free">Did you like the game ?</h3>
+          <!-- Answer -->
+          <div class="form">
+            <button type="submit" class="yeah">Yeah!</button>
+            <button type="submit" class="nope" id="nope">Nope!</button>
+          </div>
+        </section>
+
+        <!-- Load new questions -->
+      </main>
+    </div>
+
+    <footer class="footer center">
+      <p id="creator">copyRight &copy; created by CoJutsu</p>
+    </footer>
+    <!-- Scripts -->
+    <script src="app.js"></script>
+  </body>
+</html>

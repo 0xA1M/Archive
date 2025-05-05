@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/styles/style.css" />
+    <title>Todo List</title>
+  </head>
+  <body>
+    <main class="container">
+      <section class="newTaskEntry">
+        <form class="newTaskEntry__form">
+          <label for="taskInput">Enter Your Task</label>
+          <div class="inputContainer">
+            <input
+              type="text"
+              name="task"
+              id="taskInput"
+              placeholder="Add Task"
+              autocomplete="off"
+              maxlength="32"
+            />
+            <button
+              class="btn"
+              id="addTaskBtn"
+              title="Add new task"
+              aria-label="Add new task to the todo list"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="#000000"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <title></title>
+                  <g id="Complete">
+                    <g data-name="add" id="add-2">
+                      <g>
+                        <line
+                          fill="none"
+                          stroke="#000000"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          x1="12"
+                          x2="12"
+                          y1="19"
+                          y2="5"
+                        ></line>
+                        <line
+                          fill="none"
+                          stroke="#000000"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          x1="5"
+                          x2="19"
+                          y1="12"
+                          y2="12"
+                        ></line>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="taskList">
+        <header class="listHeader">
+          <h2 class="title">List</h2>
+
+          <div class="statsContainer">
+            <p>
+              <span id="inProgress" class="bold">0</span> Tasks in progress!
+              <span class="light">|</span>
+              <span id="completed" class="bold">0</span> Tasks in completed!
+            </p>
+            <button
+              class="btn"
+              id="clearAllTasks"
+              title="Clear todo list"
+              aria-label="Remove all of the task from the todo list"
+            >
+              Clear
+            </button>
+          </div>
+        </header>
+
+        <ul class="list"></ul>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

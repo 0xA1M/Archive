@@ -1,0 +1,351 @@
+/* Reset Styles */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  outline: none;
+}
+
+/* Reset List Styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Reset Heading Margins */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+/* Reset Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Global Styles */
+body {
+  height: 100vh;
+  font-family: "Poppins", Arial, sans-serif;
+  background: #1a1a1a;
+  color: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
+  width: 0;
+  height: 0;
+  cursor: none;
+  border: 0;
+  pointer-events: none;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: rgb(146, 146, 146);
+}
+
+.slide {
+  animation: slide 0.45s ease-in-out forwards;
+}
+
+.slideBack {
+  animation: slideBack 0.45s ease-in-out forwards;
+}
+
+.fadeIn {
+  animation: fadeIn 0.45s ease-in-out forwards;
+}
+
+.fadeOut {
+  animation: fadeOut 0.45s ease-in-out forwards;
+}
+
+/* Container Styles */
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* Section Styles */
+section {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Form Styles */
+.newTaskEntry {
+  width: 60vw;
+  height: 85vh;
+  padding: 1.1rem;
+}
+
+.newTaskEntry__form {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Input Container Styles */
+.inputContainer {
+  margin: 1.5em;
+}
+
+.newTaskEntry__form label {
+  font-size: 1.8rem;
+}
+
+.inputContainer input {
+  padding: 1em;
+  border-radius: 5px 0 0 5px;
+}
+
+.inputContainer .btn {
+  width: 2.3em;
+  height: 3.2em;
+  font-size: 1.1rem;
+  cursor: pointer;
+  position: relative;
+  top: 4px;
+  left: -3px;
+  border-radius: 0 5px 5px 0;
+}
+
+.inputContainer .btn svg {
+  transform: translateY(20%);
+  width: 1.5em;
+  height: 1.5em;
+}
+
+/* Task List Styles */
+.taskList {
+  margin-right: 1em;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.listHeader {
+  width: 100%;
+  height: 20%;
+  padding: 1em;
+  border-bottom: 2px solid white;
+}
+
+.listHeader .title {
+  margin-top: -0.3em;
+  font-size: 2rem;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+.listHeader .statsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.statsContainer p {
+  font-size: 1.1rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.light {
+  position: relative;
+  top: 3px;
+  font-size: 1.7rem;
+  font-weight: lighter;
+}
+
+.statsContainer .btn {
+  width: 5em;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.taskList .list {
+  width: 100%;
+  max-height: 80%;
+  overflow: scroll;
+  padding: 1.5em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  align-items: center;
+  gap: 1em;
+}
+
+.list .task {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 3em;
+  border-radius: 5px;
+  border: 1px solid white;
+  overflow: hidden;
+  transition: all 1s linear;
+}
+
+.task .taskName {
+  font-size: 1.3rem;
+  padding: 1.1em;
+}
+
+.dotMenu {
+  margin: 0.8em;
+  cursor: pointer;
+  transition: all 1s;
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  transform: scale(2);
+  margin: 0.4em;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.taskOptionList {
+  width: 5em;
+  height: 3em;
+  position: absolute;
+  right: -10em;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: opacity 1s;
+}
+
+.taskOptionList .btn {
+  position: relative;
+  width: 2.3em;
+  height: 2.3em;
+  border-radius: 50%;
+  background: none;
+}
+
+.taskOptionList .btn svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.5em;
+  height: 1.5em;
+  stroke: #ffffff;
+  cursor: pointer;
+  transition: transform 100ms ease-in-out;
+}
+
+.taskOptionList .btn svg:hover {
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+/* Animations */
+
+@keyframes slide {
+  from {
+    right: -10em;
+    opacity: 0;
+  }
+
+  to {
+    right: 0em;
+    opacity: 1;
+  }
+}
+
+@keyframes slideBack {
+  from {
+    right: 0em;
+    opacity: 1;
+  }
+
+  to {
+    right: -10em;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+/* Dynamic Theme Shifter */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+  }
+
+  .newTaskEntry__form,
+  .taskList,
+  .listHeader,
+  .list .task {
+    border-color: #1a1a1a;
+  }
+
+  .inputContainer input {
+    border: 1px solid #1a1a1a;
+  }
+
+  .inputContainer .btn {
+    height: 3.3em;
+    left: -5px;
+    border: 1px solid #1a1a1a;
+  }
+
+  .dot {
+    background-color: #1a1a1a;
+  }
+
+  .taskOptionList .btn svg {
+    stroke: #1a1a1a;
+  }
+}
