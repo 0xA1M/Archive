@@ -14,7 +14,8 @@ _Within the stygian vaults of forsaken commits, runic relics slumber—embers of
 | Stupid Trivia | Around 2019  | HTML, CSS, and JS                           | A cool quiz game with a twist, questions are fetched from opentbd api |
 | Color Picker  | Around 2019  | HTML, SCSS, and JS using vite as build tool | A random color generator, first time using SCSS                       |
 | Todo List     | Oct 27, 2023 | HTML, CSS and TS using vite as build tool   | A simple to-do list app made in typescript                            |
+| Rusty Calc    | Sep 03, 2025 | Rust                                        | A simple full stack web app in rust (minimal library footprint)       |
 
 ---
 
-_May these runic relics stoke embers in your soul—entombed in silence, their murmurs still throb in the shadowed depths._
+_May these runic relics stoke embers in your soul—entombed in silence, their murmurs stillrob in the shadowed depths._
