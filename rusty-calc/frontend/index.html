@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>POST-only Calculator (with real API)</title>
+  <style>
+    body {
+      display: grid;
+      place-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #0f172a;
+      color: #e5e7eb;
+      font-family: sans-serif;
+    }
+    .app {
+      width: 300px;
+      background: #1e293b;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      overflow: hidden;
+    }
+    .display {
+      min-height: 80px;
+      padding: 16px;
+      text-align: right;
+      font-size: 28px;
+      background: #111827;
+    }
+    .error {
+      font-size: 12px;
+      color: #f87171;
+      min-height: 16px;
+    }
+    .keys {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 16px;
+    }
+    button {
+      padding: 16px 0;
+      font-size: 18px;
+      border-radius: 8px;
+      border: none;
+      background: #334155;
+      color: white;
+      cursor: pointer;
+    }
+    button.op { color: #60a5fa; font-weight: bold; }
+    button:active { background: #475569; }
+    .wide { grid-column: span 3;}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="display">
+      <div id="expr"></div>
+      <div id="result">0</div>
+      <div class="error" id="error"></div>
+    </div>
+    <div class="keys" id="keys">
+      <button data-k="C" class="wide">C</button>
+      <button class="op" data-k="/">÷</button>
+
+      <button data-k="7">7</button>
+      <button data-k="8">8</button>
+      <button data-k="9">9</button>
+      <button class="op" data-k="*">×</button>
+
+      <button data-k="4">4</button>
+      <button data-k="5">5</button>
+      <button data-k="6">6</button>
+      <button class="op" data-k="-">−</button>
+
+      <button data-k="1">1</button>
+      <button data-k="2">2</button>
+      <button data-k="3">3</button>
+      <button class="op" data-k="+">+</button>
+
+      <button data-k="0">0</button>
+      <button data-k="." disabled>.</button>
+      <button data-k="BACK">⌫</button>
+      <button class="op" data-k="=">=</button>
+    </div>
+  </div>
+
+  <script>
+    const exprEl = document.getElementById('expr');
+    const resultEl = document.getElementById('result');
+    const errorEl = document.getElementById('error');
+    const keys = document.getElementById('keys');
+
+    let current = '';
+    let a = null;
+    let op = null;
+
+    function setError(msg){ errorEl.textContent = msg || ''; }
+
+    async function compute(b) {
+      if (a === null || !op) return;
+      try {
+        const res = await fetch('/calc', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ op, lhs: a, rhs: b})
+        });
+        const data = await res.json();
+        if (data.message) {
+          setError(data.message);
+          resultEl.textContent = 'Err';
+        } else {
+          resultEl.textContent = data.result;
+          a = data.result;
+        }
+      } catch (e) {
+        setError('Network error');
+      }
+    }
+
+    function press(k) {
+      setError('');
+      if (k === 'C') { a=null; op=null; current=''; exprEl.textContent=''; resultEl.textContent='0'; return; }
+      if (k === 'BACK') { current=current.slice(0,-1); exprEl.textContent=current; return; }
+      if (['+','-','*','/'].includes(k)) {
+        if (current) { a=parseFloat(current); current=''; }
+        op = k; exprEl.textContent = a + ' ' + op;
+        return;
+      }
+      if (k === '=') {
+        if (a!==null && op && current) compute(parseFloat(current));
+        return;
+      }
+      current += k;
+      exprEl.textContent = (a!==null && op ? a+' '+op+' ' : '') + current;
+    }
+
+    keys.addEventListener('click', e => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      press(b.dataset.k);
+    });
+  </script>
+</body>
+</html>
